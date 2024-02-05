@@ -82,3 +82,35 @@ input {
   cursor: pointer;
   font-size: 20px;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+ width: 100%;
+}
+
+.list {
+  padding: 8px;
+  margin-top: 10px;
+  max-height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #aaaaaa4d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 106, 255);
+  border-radius: 2px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+ opacity: 0.5;
+}

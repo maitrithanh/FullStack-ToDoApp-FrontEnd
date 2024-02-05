@@ -2,13 +2,16 @@ import axios from 'axios'
 
 const baseUrl = "https://fullstack-todoapp-backend-9va1.onrender.com"
 
-const getAllToDo =(setToDo) => {
+const getAllToDo =(setToDo, setLoading) => {
     axios
     .get(baseUrl)
     .then((data) =>{
         // console.log("data ---->", data)
+        setLoading(true)
         setToDo(data.data)
-    })
+    }).finally(
+        setLoading(false)
+    )
 }
 
 const addToDo = (text, setText, setToDo) => {

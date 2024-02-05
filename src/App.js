@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 import ToDo from "./components/ToDo";
 import { addToDo, deleteToDo, getAllToDo, updateToDo } from "./utils/HandleApi";
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from "./components/Loading";
 
 function App() {
   const [todo, setToDo] = useState([])
+  const [loading, setLoading] = useState(false)
   const [text, setText] = useState("")
   const [isUpdating, setIsUpdating] = useState(false)
   const [toDoId, setToDoId] = useState("")
 
   useEffect(() => {
-    getAllToDo(setToDo)
+    getAllToDo(setToDo, setLoading)
   }, [])
+  
 
   const updateMode = (_id, text) => {
     setIsUpdating(true)
@@ -41,6 +44,7 @@ function App() {
         </div>
 
         <div className="list">
+          {!loading && <Loading />}
           {todo.map((item) => <ToDo key={item._id} text={item.text} updateMode={() => updateMode(item._id, item.text)} deleteToDo={() => deleteMode(item._id)}/>)}
         </div>
       </div>
